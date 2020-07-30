@@ -1,0 +1,50 @@
+// 전혀 화면에 출력되지 않음
+// 어느 부분에 에러가 있는지도 확인이 안 됨
+
+function FancyBorder(props) {
+  return (
+    <div className={'FancyBorder FancyBorder-' + props.color}>
+      {props.children}
+    </div>
+  );
+}
+
+// 이 컴포넌트를 function으로 바꾸면 UI 렌더링은 됨
+class WelcomeDialog extends React.Component {
+  	constructor(props) {
+		super(props);
+		this.state = {value: ''};
+		this.handleChange = this.handleChange.bind(this);
+		this.handleClick = this.handleClick.bind(this);
+	}
+	
+	function handleChange(e) {
+		this.setState({value: e.target.value});
+	}
+
+	function handleClick(e) {
+		alert({'Welcome! ' + {this.state.value}});
+	}
+  
+  render() {
+    return (
+        <FancyBorder color="blue">
+          <h1>
+            화성 침공 계획
+          </h1>
+          <p>
+            이 터무니 없는 계획에 참여한 당신은 누구십니까?
+          </p>
+          <input onChange={this.handleChange} />
+          <button onClick={this.handleClick}>
+            ...입니다.
+          </button>
+        </FancyBorder>
+    );
+  }
+}
+
+ReactDOM.render(
+  <WelcomeDialog />,
+  document.getElementById('root')
+);
