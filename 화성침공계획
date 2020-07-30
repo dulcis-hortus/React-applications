@@ -23,7 +23,7 @@ class WelcomeDialog extends React.Component {
 	}
 
 	function handleClick(e) {
-		alert({'Welcome! ' + {this.state.value}});
+		alert({'당장 도망쳐요, ' + {this.state.value}});
 	}
   
   render() {
